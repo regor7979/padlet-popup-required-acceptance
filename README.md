@@ -1,0 +1,1 @@
+# padlet-popup-required-acceptance
