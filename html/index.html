@@ -1,35 +1,36 @@
 <html>
 <script src="https://unpkg.com/simple-gdpr@1.1.5/dist/simplegdpr.umd.js"></script>
 <link href="https://unpkg.com/simple-gdpr@1.1.5/dist/simplegdpr.min.css" rel="stylesheet">
-<body>
+<body  onload="loadPopup()">
 <script>
+function loadPopup() {
+	const group = document.createElemesnt('div');
+	const message = document.createElement('span');
+	const policy = document.createElement('span');
 
-const group = document.createElement('div');
-const message = document.createElement('span');
-const policy = document.createElement('span');
+	message.innerText = 'My custom message! ';       
+	policy.innerText = 'Privacy Policy';
+	policy.classList.add('sgdpr-policy');
 
-message.innerText = 'My custom message! ';       
-policy.innerText = 'Privacy Policy';
-policy.classList.add('sgdpr-policy');
-
-group.appendChild(message);
-group.appendChild(policy);
-alert(document.cookie);
-if(document.cookie!='accepted=true'){
-	const notice = new SimpleGDPR({
-	  message: group,
-	  link: () => {
-		alert('Here are my terms!');
-	  }
-	});
-	notice.setCallback(() => {  
-	  notice.close();        
-	  document.cookie = "accepted=true";
-	   alert(document.cookie);
-	  document.getElementById('padletembedded').style.display='block';
-	});
-}else{
-	document.getElementById('padletembedded').style.display='block';
+	group.appendChild(message);
+	group.appendChild(policy);
+	alert(document.cookie);
+	if(document.cookie!='accepted=true'){
+		const notice = new SimpleGDPR({
+		  message: group,
+		  link: () => {
+			alert('Here are my terms!');
+		  }
+		});
+		notice.setCallback(() => {  
+		  notice.close();        
+		  document.cookie = "accepted=true";
+		   alert(document.cookie);
+		  document.getElementById('pasdletembedded').style.display='block';
+		});
+	}else{
+		document.getElementById('pasdletembedded').style.display='block';
+	}
 }
 
 </script>
