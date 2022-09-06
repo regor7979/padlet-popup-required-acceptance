@@ -15,7 +15,7 @@ policy.classList.add('sgdpr-policy');
 group.appendChild(message);
 group.appendChild(policy);
 alert(document.cookie);
-if(!document.cookie=='accepted=true'){
+if(document.cookie!='accepted=true'){
 	const notice = new SimpleGDPR({
 	  message: group,
 	  link: () => {
