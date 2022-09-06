@@ -8,13 +8,12 @@ function loadPopup() {
 	const message = document.createElement('span');
 	const policy = document.createElement('span');
 
-	message.innerText = 'My custom message! ';       
-	policy.innerText = 'Privacy Policy';
+	message.innerText = 'Text del missatge que es vulgui mostrar ';       
+	policy.innerText = 'Titol del popup';
 	policy.classList.add('sgdpr-policy');
 
 	group.appendChild(message);
 	group.appendChild(policy);
-	alert(document.cookie);
 	if(document.cookie!='accepted=true'){
 		const notice = new SimpleGDPR({
 		  message: group,
@@ -25,7 +24,6 @@ function loadPopup() {
 		notice.setCallback(() => {  
 		  notice.close();        
 		  document.cookie = "accepted=true";
-		   alert(document.cookie);
 		  document.getElementById('padletembedded').style.display='block';
 		});
 	}else{
